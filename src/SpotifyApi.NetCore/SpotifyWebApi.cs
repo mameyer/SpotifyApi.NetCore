@@ -77,14 +77,13 @@ namespace SpotifyApi.NetCore
         /// <typeparam name="T">The type to deserialise to</typeparam>
         protected internal virtual async Task<T> GetModel<T>(string url, string accessToken = null)
         {
-            return JsonConvert.DeserializeObject<T>
+            var response = await _http.Get
             (
-                await _http.Get
-                (
-                    url,
-                    new AuthenticationHeaderValue("Bearer", accessToken ?? (await GetAccessToken()))
-                )
+                url,
+                new AuthenticationHeaderValue("Bearer", accessToken ?? (await GetAccessToken()))
             );
+
+            return JsonConvert.DeserializeObject<T>(response);
         }
 
         /// <summary>

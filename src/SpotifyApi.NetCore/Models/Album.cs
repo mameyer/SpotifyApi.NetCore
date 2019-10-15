@@ -73,7 +73,7 @@ namespace SpotifyApi.NetCore
         public long TotalTracks { get; set; }
 
         /// <summary>
-        /// The object type: “album”
+        /// The object type: ï¿½albumï¿½
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
